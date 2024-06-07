@@ -1,0 +1,78 @@
+Concurrent(
+    Set(
+        varPerfil;    //Variable para comprobar si el usuario que usa la app se encuentra en la lista de sharepoint de usuarios que pueden usar la app
+        LookUp(
+            USUARIOS;
+            User().Email = Correo.Email
+        )
+    );
+    Set(VarCambioUsuarioExitoso; false);
+
+    Set(    //Variable que almacena el primer día de la semana. Por ejemplo, si hoy es viernes, restará 3 días a la fecha actual para obtener el lunes como el primer día de la semana.
+        __FirstDayOfWeek;
+        Switch(
+            Weekday(Today());
+            7;
+            DateAdd(
+                Today();
+                -5;
+                TimeUnit.Days
+            );
+            6;
+            DateAdd(
+                Today();
+                -4;
+                TimeUnit.Days
+            );
+            5;
+            DateAdd(
+                Today();
+                -3;
+                TimeUnit.Days
+            );
+            4;
+            DateAdd(
+                Today();
+                -2;
+                TimeUnit.Days
+            );
+            3;
+            DateAdd(
+                Today();
+                -1;
+                TimeUnit.Days
+            );
+            1;
+            DateAdd(
+                Today();
+                1;
+                TimeUnit.Days
+            );
+            Today()
+        )
+    );
+    ClearCollect(    //Creo una lista con los nombres completos de los días de la semana
+        _col_WeekDays;
+        Calendar.WeekdaysLong()
+    )
+);;
+//Cambio el orden de los días, poniendo el domingo al final de la semana en lugar de al principio
+Set(
+    __SundayDay;
+    First(_col_WeekDays)
+);;
+Remove(
+    _col_WeekDays;
+    First(_col_WeekDays)
+);;
+Collect(
+    _col_WeekDays;
+    __SundayDay
+);;
+
+Set(varOpenDialog; false);;
+
+ClearCollect(
+    _col_Admins;
+    Filter(USUARIOS; Rol.Value = "Admin").Correo
+);;
