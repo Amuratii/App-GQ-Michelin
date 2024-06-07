@@ -1,0 +1,10 @@
+If(     //Compruebo si el usuario que utiliza la aplicación se encuentra en la lista de usuarios destinados a usarla
+    IsBlank(
+        LookUp(
+            USUARIOS;
+            User().Email = Correo.Email
+        )
+    );
+    RejectionScreen;        //Si no está, muestro la pantalla rechazo
+    HomeScreen      //Si se encuentra en la lista, accedemos a la pantalla de inicio
+)
