@@ -31,7 +31,7 @@ Este proyecto se desarrolló como parte de mi trabajo de fin de grado en Desarro
 ## Requisitos
 
 - **Microsoft PowerApps**: Para ejecutar y modificar la aplicación.
-- **Cuenta de Microsoft Office 365**: Para acceder a los servicios de SharePoint y Azure.
+- **Cuenta de Microsoft Office 365**: Para acceder a los servicios de SharePoint.
 - **Conexión a Internet**: Para utilizar las funcionalidades en línea.
 
 ## Instalación
@@ -83,49 +83,49 @@ Este proyecto se desarrolló como parte de mi trabajo de fin de grado en Desarro
 
 ```plaintext
 // Inicializar variables globales
-Set(UserLoggedIn, User().Email);
-Set(AppTitle, "Gestión de Tareas Michelin");
+Set(UserLoggedIn; User().Email);;
+Set(AppTitle; "Gestión de Tareas Michelin");;
 ```
 
 ### Carga de Datos desde SharePoint
 
 ```plaintext
 // Cargar datos desde una lista de SharePoint
-ClearCollect(DataCollection, SharePointListName);
+ClearCollect(DataCollection; SharePointListName);;
 ```
 
 ### Manejo de Eventos del Usuario
 
 ```plaintext
 // Evento de clic en un botón
-OnSelect(Button1,
-    Notify("Botón clicado", NotificationType.Information);
-    Navigate(Screen2, ScreenTransition.Fade);
-);
+OnSelect(Button1;
+    Notify("Botón clicado"; NotificationType.Information);
+    Navigate(Screen2; ScreenTransition.Fade);
+);;
 ```
 
 ### Validación de Formulario
 
 ```plaintext
 // Validar campos del formulario antes de enviar
-If(IsBlank(TextInput1.Text),
-    Notify("El campo no puede estar vacío", NotificationType.Error),
+If(IsBlank(TextInput1.Text);
+    Notify("El campo no puede estar vacío"; NotificationType.Error),;
     SubmitForm(Form1)
-);
+);;
 ```
 
 ### Automatización con PowerAutomate
 
 ```plaintext
 // Invocar un flujo de PowerAutomate
-Set(Result, 'PowerAutomateFlow'.Run(Parameter1, Parameter2));
+Set(Result; 'PowerAutomateFlow'.Run(Parameter1; Parameter2));;
 ```
 
 ### Uso de Colecciones para Manipular Datos
 
 ```plaintext
 // Crear y manipular una colección
-ClearCollect(TempCollection, Filter(OriginalData, Condition));
+ClearCollect(TempCollection; Filter(OriginalData; Condition));;
 ```
 
 ### Funciones Personalizadas
@@ -140,29 +140,14 @@ Set(CalculatedValue,
 );
 ```
 
-## Contribuciones
-
-Las contribuciones son bienvenidas. Si deseas colaborar en este proyecto, por favor sigue los siguientes pasos:
-
-1. **Fork el Repositorio**
-2. **Crea una Rama Feature**
-   ```bash
-   git checkout -b feature/nueva-feature
-   ```
-3. **Realiza tus Cambios**
-4. **Envía un Pull Request**
-
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consulta el archivo LICENSE.
+Este proyecto está licenciado bajo el grupo MICHELIN. Para más detalles, consulta el archivo LICENSE.
 
 ## Contacto
 
 Para más información o consultas, puedes contactarme a través de:
 
-- **Correo Electrónico**: tuemail@dominio.com
-- **LinkedIn**: [Tu Nombre](https://www.linkedin.com/in/tuusuario)
+- **Correo Electrónico**: adrmuratim@gmail.com
 
----
 
-Este archivo README proporciona una guía clara y estructurada sobre el contenido del repositorio, cómo instalar y utilizar la aplicación, y detalles sobre la estructura del código y fragmentos importantes.
